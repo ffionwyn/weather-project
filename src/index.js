@@ -5,6 +5,7 @@ function formatDate() {
       today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
     let time = today.getHours() + ":" + today.getMinutes();
     
+    
    
     let dateTime = date + " " + time;
     document.getElementById("todays-date").innerHTML = dateTime;
@@ -27,6 +28,7 @@ function formatDate() {
  description.innerHTML = response.data.weather[0].description;
  document.getElementById("location-header").innerHTML = response.data.name;
   }
+  
 
   function getCurrentLocation(event) {
     event.preventDefault();
