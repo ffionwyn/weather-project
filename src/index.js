@@ -22,7 +22,8 @@ function weeklyForecast(response) {
     console.log(dayData);
     document.getElementById(`day${x}`).innerHTML =
       days[new Date(dayData.dt * 1000).getDay()];
-    document.getElementById(`temp${x}`).innerHTML = dayData.temp.day + "°C";
+    document.getElementById(`temp${x}`).innerHTML =
+      Math.round(dayData.temp.day) + "°C";
     document.getElementById(
       `icon${x}`
     ).innerHTML = `<img src="http://openweathermap.org/img/w/${dayData.weather[0].icon}.png"/>`;
@@ -42,17 +43,22 @@ function showTemperature(response) {
   description.innerHTML = response.data.weather[0].description;
   document.getElementById("location-header").innerHTML = response.data.name;
   searchWeeklyForecast(response.data.coord.lat, response.data.coord.lon);
+  document.getElementById("today").toggleAttribute("hidden", false);
 }
 
 function getCurrentLocation(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition((locationObject) => {
-    console.log(locationObject);
-    const lat = locationObject.coords.latitude;
-    const lon = locationObject.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showTemperature);
-  });
+
+  navigator.geolocation.getCurrentPosition(
+    (locationObject) => {
+      const lat = locationObject.coords.latitude;
+      const lon = locationObject.coords.longitude;
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(showTemperature);
+    },
+    (err) => console.log(err),
+    { maximumAge: 60000, timeout: 5000, enableHighAccuracy: true }
+  );
 }
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
@@ -61,7 +67,6 @@ formatDate();
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", (event) => {
-  console.log("HERE");
   event.preventDefault();
   let location = document.getElementById("chosen-city").value;
   searchLocation(location);

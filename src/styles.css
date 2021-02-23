@@ -1,58 +1,57 @@
-h2{
-  color: #2F4F4F;
+h2 {
+  color: #2f4f4f;
   padding: 10px 40px;
 }
 .row {
-    color: #0000CD;
-    font-size: 20px
+  color: #0000cd;
+  font-size: 20px;
 }
 .today {
-   color: #0000CD;
-    margin-top: 10px;
-    margin-left: 33px;
+  color: #0000cd;
+  margin-top: 10px;
+  margin-left: 33px;
 }
 
 i {
-    color: black;
+  color: black;
 }
 
 .today i {
-    font-size: 25px;
-     vertical-align: middle;
-    
+  font-size: 25px;
+  vertical-align: middle;
 }
 
-
-
 .weather-container {
-width: 500px;
-    height: 100%;
-    margin: 10px; 
-    padding: 10px; 
-    border: solid black;
-     box-sizing: border-box;
-     border-width: 1px;
-     border-radius: 10px;
-     background-color: #F0F8FF;
+  position: fixed;
+  left: 25%;
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
+  border: solid black;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-radius: 10px;
+  background-color: #f0f8ff;
 }
 
 .row-weather {
-    text-align: center;
-    margin-left: 40px;
+  text-align: center;
+  margin-left: 40px;
 }
 a {
-    font-size: 8px;
-    
+  font-size: 8px;
 }
 
 #current-location-button {
-    margin-left: 10px;
-    margin-top: 10px;
+  margin-left: 50px;
+  margin-top: 10px;
 }
 
 #location-header {
-    color: #000080;
-    text-decoration-style: solid;
+  color: #000080;
+  text-decoration-style: solid;
 }
 
-
+#temperature-description {
+  text-transform: capitalize;
+}
