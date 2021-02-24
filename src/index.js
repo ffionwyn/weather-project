@@ -37,13 +37,15 @@ function searchWeeklyForecast(lat, lon) {
 
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
+  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = `${temperature}°C`;
+  temperatureElement.innerHTML = `Current Temperature : ${temperature}°C`;
   let description = document.querySelector("#temperature-description");
   description.innerHTML = response.data.weather[0].description;
   document.getElementById("location-header").innerHTML = response.data.name;
   searchWeeklyForecast(response.data.coord.lat, response.data.coord.lon);
   document.getElementById("today").toggleAttribute("hidden", false);
+  displayWindSpeed(response.data.wind.speed);
 }
 
 function getCurrentLocation(event) {
@@ -71,3 +73,15 @@ form.addEventListener("submit", (event) => {
   let location = document.getElementById("chosen-city").value;
   searchLocation(location);
 });
+
+function displayWindSpeed(wind) {
+  let windElement = document.querySelector("#wind-speed");
+  const windSpeedKMH = Math.round(wind);
+  windElement.innerHTML = `Wind Speed : ${windSpeedKMH}KMH`;
+
+  //℉=(℃*1.8)+32
+
+  //function temperatureConverter(valNum) {
+  //valNum = parseFloat(valNum);
+  //document.getElementById("outputFahrenheit").innerHTML=(valNum*1.8)+32;
+}
