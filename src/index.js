@@ -78,7 +78,4 @@ function displayWindSpeed(wind) {
   let windElement = document.querySelector("#wind-speed");
   const windSpeedKMH = Math.round(wind);
   windElement.innerHTML = `Wind Speed : ${windSpeedKMH}KMH`;
-
-  
-
-  
+}
