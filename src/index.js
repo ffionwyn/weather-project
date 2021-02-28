@@ -79,9 +79,6 @@ function displayWindSpeed(wind) {
   const windSpeedKMH = Math.round(wind);
   windElement.innerHTML = `Wind Speed : ${windSpeedKMH}KMH`;
 
-  //℉=(℃*1.8)+32
+  
 
-  //function temperatureConverter(valNum) {
-  //valNum = parseFloat(valNum);
-  //document.getElementById("outputFahrenheit").innerHTML=(valNum*1.8)+32;
-}
+  
